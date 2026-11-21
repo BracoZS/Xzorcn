@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "xzor-todo-sample",
+      "name": "xzor-app",
       "dependencies": {
         "@source-crafter/xzor-runtime": "^0.1.7",
       },

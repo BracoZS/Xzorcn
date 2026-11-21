@@ -1,5 +1,5 @@
 {
-  "name": "xzor todo sample",
+  "name": "xzorcn",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "remoteEnv": {
     "PATH": "/home/vscode/.bun/bin:${containerEnv:PATH}"
@@ -13,11 +13,11 @@
   },
   "forwardPorts": [3000],
   "portsAttributes": {
-    "3000": { "label": "Todo app", "onAutoForward": "openPreview" }
+    "3000": { "label": "Xzorcn", "onAutoForward": "openPreview" }
   },
   "customizations": {
     "codespaces": {
-      "openFiles": ["pages/Todos.xzor"]
+      "openFiles": ["src/pages/Home.xzor"]
     }
   }
 }
