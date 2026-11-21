@@ -1,0 +1,112 @@
+@import { navLinks as configuredNavLinks, siteConfig as configuredSite } from "../config/site"
+
+@code {
+  links = configuredNavLinks;
+  site = configuredSite;
+}
+
+<header class="sticky top-0 z-50 w-full bg-white">
+  <div class="mx-auto flex h-14 max-w-screen-2xl items-center px-4 sm:px-6 lg:h-16">
+    <button
+      type="button"
+      disabled
+      class="flex h-8 cursor-not-allowed items-center gap-2 rounded-md text-sm font-medium text-slate-950 opacity-100 lg:hidden"
+      aria-label="Menú de navegación"
+    >
+      <span class="relative flex h-8 w-4 items-center justify-center" aria-hidden="true">
+        <span class="absolute top-2 block h-0.5 w-4 bg-current"></span>
+        <span class="absolute top-3.5 block h-0.5 w-4 bg-current"></span>
+      </span>
+      <span class="text-lg leading-none font-medium">Menu</span>
+    </button>
+
+    <nav class="hidden h-full items-center gap-0 lg:flex" aria-label="Navegación principal">
+      @for (const link of links) {
+        @if (link.href) {
+          <a
+            @key="link.label"
+            href="@link.href"
+            aria-current="page"
+            class="inline-flex h-8 items-center justify-center rounded-md px-2.5 text-sm font-medium text-slate-900 transition-colors hover:bg-slate-100"
+          >
+            @link.label
+          </a>
+        } else if (link.muted) {
+          <span
+            @key="link.label"
+            aria-disabled="true"
+            class="inline-flex h-8 items-center justify-center rounded-md px-2.5 text-sm font-medium text-slate-300"
+          >
+            @link.label
+          </span>
+        } else {
+          <span
+            @key="link.label"
+            aria-disabled="true"
+            class="inline-flex h-8 items-center justify-center rounded-md px-2.5 text-sm font-medium text-slate-600"
+          >
+            @link.label
+          </span>
+        }
+      }
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+      <button
+        type="button"
+        disabled
+        aria-label="Búsqueda no disponible todavía"
+        class="hidden h-8 cursor-not-allowed items-center gap-2 rounded-lg bg-slate-100 px-3 text-left text-sm text-slate-500 opacity-100 transition-colors md:inline-flex md:w-48 lg:w-40 xl:w-64"
+      >
+        <svg viewBox="0 0 24 24" class="size-4 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-4-4" />
+        </svg>
+        <span class="hidden truncate xl:inline">Search documentation...</span>
+        <span class="inline-flex flex-1 xl:hidden">Search...</span>
+      </button>
+
+      <span class="hidden h-4 w-px bg-slate-200 lg:block" aria-hidden="true"></span>
+
+      <a
+        href="@site.repositoryUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex h-8 shrink-0 items-center gap-2 rounded-md px-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+        aria-label="Ver Xzorcn en GitHub (se abre en una pestaña nueva)"
+      >
+        <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true">
+          <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.28-1.24-1.62-1.24-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.69 2.6 1.2 3.23.91.1-.72.39-1.2.7-1.48-2.47-.28-5.06-1.24-5.06-5.51 0-1.22.44-2.22 1.15-3-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.11-1.45 3.05-1.15 3.05-1.15.61 1.54.23 2.68.11 2.96.72.78 1.15 1.78 1.15 3 0 4.28-2.6 5.22-5.08 5.5.4.35.76 1.02.76 2.06v3.05c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
+        </svg>
+        <span class="w-fit text-xs tabular-nums text-slate-500">@site.repositoryStars</span>
+      </a>
+
+      <span class="h-4 w-px bg-slate-200" aria-hidden="true"></span>
+
+      <button
+        type="button"
+        disabled
+        aria-label="Selector de tema no disponible todavía"
+        class="inline-flex size-8 shrink-0 cursor-not-allowed items-center justify-center rounded-md text-slate-600 opacity-100"
+      >
+        <svg viewBox="0 0 24 24" class="size-[18px]" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 3a9 9 0 0 0 0 18Z" />
+        </svg>
+      </button>
+
+      <span class="h-4 w-px bg-slate-200" aria-hidden="true"></span>
+
+      <button
+        type="button"
+        disabled
+        class="inline-flex h-[31px] shrink-0 cursor-not-allowed items-center gap-1 rounded-lg bg-slate-950 px-2.5 text-xs font-medium text-white opacity-100"
+      >
+        <svg viewBox="0 0 24 24" class="size-3.5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 4v16M20 12H4" />
+        </svg>
+        New
+      </button>
+    </div>
+  </div>
+</header>

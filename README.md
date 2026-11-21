@@ -10,3 +10,7 @@ bun run dev
 ```
 
 The app is mounted at `/`. Add pages in `src/pages`, shared components in `src/components`, and application logic in `src`.
+
+## Site configuration
+
+Site-wide values and navigation links are defined in `src/config/site.ts`. Update `navLinks` there to add or enable header items.
